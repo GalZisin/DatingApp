@@ -15,6 +15,7 @@ namespace DatingAppAPI.Controllers
         {
             _context = context;
         }
+
         /// <summary>
         /// get users
         /// </summary>
@@ -25,6 +26,7 @@ namespace DatingAppAPI.Controllers
 
             return await _context.Users.ToListAsync();
         }
+
         /// <summary>
         /// get user by id
         /// </summary>
