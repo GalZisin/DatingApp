@@ -11,7 +11,6 @@ import { AccountService } from '../_services/account.service';
 })
 export class NavComponent implements OnInit {
   model: any = {};
-  // loggedIn!: boolean;
   loginForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
@@ -23,15 +22,11 @@ export class NavComponent implements OnInit {
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     })
-
-    // this.getCurrentUser();
-    // this.currentUser$ = this.accountService.currentUser$;
   }
   login(loginForm: FormGroup) {
     this.accountService.login(loginForm.value).subscribe({
       next: (response) => {
         console.log(response);
-        // this.loggedIn = true;
       },
       error: (error) => { console.log(error) }
     })
@@ -39,13 +34,5 @@ export class NavComponent implements OnInit {
 
   logout() {
     this.accountService.logout();
-    // this.loggedIn = false;
   }
-
-  // getCurrentUser() {
-  //   this.accountService.currentUser$.subscribe({
-  //     next: (user) => this.loggedIn = !!user,
-  //     error: (error) => console.log(error),
-  //   })
-  // }
 }
