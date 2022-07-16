@@ -36,12 +36,14 @@ namespace DatingAppAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices(_config);
+
+            services.AddCors(option => option.AddDefaultPolicy(builder => builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod()));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
             });
-            services.AddCors();
+ 
             services.AddIdentityServices(_config);
         }
 
@@ -59,7 +61,8 @@ namespace DatingAppAPI
 
             app.UseRouting();
 
-            app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
+            app.UseCors();
+            //app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
             app.UseAuthentication();
 
