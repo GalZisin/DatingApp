@@ -35,11 +35,12 @@ export class NavComponent implements OnInit {
         this.loginForm.get('password')?.patchValue('');
         this.loginForm.updateValueAndValidity();
         this.router.navigateByUrl('/members');
-      },
-      error: (error) => {
-        console.log(error);
-        this.toastr.error(error.error);
       }
+      // ,
+      // error: (error) => {
+      //   console.log(error);
+      //   this.toastr.error(error.error);
+      // }
     })
   }
 
