@@ -33,17 +33,11 @@ namespace DatingAppAPI.Controllers
         [HttpGet("server-error")]
         public ActionResult<string> GetServerError()
         {
-            //try
-            //{
-                var thing = _context.Users.Find(-1);
+            var thing = _context.Users.Find(-1);
 
-                var thingToReturn = thing.ToString();
-                return thingToReturn;
-            //}
-            //catch (NullReferenceException ex)
-            //{
-            //    return StatusCode(500, ex);
-            //}
+            var thingToReturn = thing.ToString();
+
+            return thingToReturn;
         }
 
         [HttpGet("bad-request")]
