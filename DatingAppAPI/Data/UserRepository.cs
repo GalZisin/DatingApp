@@ -34,7 +34,7 @@ namespace DatingAppAPI.Data
         {
             return await _context.Users
                  .Include(p => p.Photos)
-                 .SingleOrDefaultAsync(x => x.UserName == username);
+                 .SingleOrDefaultAsync(x => x.UserName.ToLower() == username.ToLower());
         }
 
         public async Task<bool> SaveAllAsync()
@@ -50,7 +50,7 @@ namespace DatingAppAPI.Data
         public async Task<MemberDto> GetMemberAsync(string username)
         {
             return await _context.Users
-                .Where(x => x.UserName == username)
+                .Where(x => x.UserName.ToLower() == username.ToLower())
                 .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
                 .SingleOrDefaultAsync();
         }
